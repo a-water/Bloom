@@ -2,18 +2,37 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    
     cout << "hello" << endl;
     
+    for(int i=0; i<10; i++) {
+        seedParticles.push_back(SeedParticle());
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    
+    std::stringstream strm;
+    strm << "fps: " << ofGetFrameRate();
+    ofSetWindowTitle(strm.str());
+    
+    for(int i=0; i<seedParticles.size(); i++) {
+        seedParticles[i].update();
+        
+        for(int x=0; x<seedParticles.size(); x++) {
+            if(i != x) {
+                seedParticles[i].checkForCollision(seedParticles[x]);
+            }
+        }
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    for(int i=0; i<seedParticles.size(); i++) {
+        seedParticles[i].draw();
+    }
 }
 
 //--------------------------------------------------------------
