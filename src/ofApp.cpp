@@ -8,6 +8,19 @@ void ofApp::setup(){
     for(int i=0; i<10; i++) {
         seedParticles.push_back(SeedParticle());
     }
+    
+    system.addVariable("F");
+    system.printVariables();
+    
+    system.addConstant("+");
+    system.addConstant("-");
+    system.printConstants();
+    
+    system.setStart("F");
+    system.addRule(LRule("F", "F+F-F-F+F"));
+    system.printRules();
+    
+    cout << system.getLevel(2) << endl;
 }
 
 //--------------------------------------------------------------

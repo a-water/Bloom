@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
-
 #include "SeedParticle.h"
+#include "LSystem.h"
 
 class ofApp : public ofBaseApp{
 
@@ -22,5 +22,7 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
     vector<SeedParticle> seedParticles;
+    
+    LSys system;
     
 };
